@@ -1,11 +1,10 @@
-// 탭 화면(홈)
 import { View, Text, StyleSheet } from 'react-native';
 
-export default function HomeScreen() {
+export default function FriendListScreen() {
     return (
-      <View style={styles.container}>
-          <Text>홈</Text>
-      </View>
+        <View style={styles.container}>
+            <Text>친구 목록</Text>
+        </View>
     );
 }
 
