@@ -4,10 +4,10 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { colors } from '@/constants/colors';
 import { spacing } from '@/constants/spacing';
 import AppText from '@/components/ui/AppText';
-import FilterTab from '@/components/community/FilterTab';
-import SearchBar from '@/components/community/SearchBar';
-import SortDropdown from '@/components/community/SortDropdown';
-import PostCard from '@/components/community/PostCard';
+import FilterTab from '@/components/postlist/FilterTab';
+import SearchBar from '@/components/postlist/SearchBar';
+import SortDropdown from '@/components/postlist/SortDropdown';
+import PostCard from '@/components/postlist/PostCard';
 
 const DUMMY_POSTS = [
     {
