@@ -1,12 +1,12 @@
 // 텍스트
-import { Text, TextStyle, TextProps } from 'react-native';
+import { Text, TextStyle, TextProps, StyleProp } from 'react-native';
 import { colors, typography } from '@/constants/index';
 interface AppTextProps extends TextProps {
     children: React.ReactNode;
     size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'| 'header';
     weight?: 'light' | 'regular' | 'medium' | 'semibold' | 'bold';
     color?: string;
-    style?: TextStyle;
+    style?: StyleProp<TextStyle>;
 }
 
 export default function AppText({

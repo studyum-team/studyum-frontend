@@ -1,4 +1,3 @@
-// 버튼
 import { TouchableOpacity, StyleSheet, ViewStyle } from 'react-native';
 import { colors, spacing } from '@/constants/index';
 import AppText from './AppText';
@@ -9,6 +8,7 @@ interface AppButtonProps {
     variant?: 'primary' | 'secondary' | 'delete' | 'outline';
     disabled?: boolean;
     style?: ViewStyle;
+    size?: 'sm' | 'md' | 'lg';
 }
 
 export default function AppButton({
@@ -17,16 +17,17 @@ export default function AppButton({
                                       variant = 'primary',
                                       disabled = false,
                                       style,
+                                      size = 'md',
                                   }: AppButtonProps) {
     return (
         <TouchableOpacity
-            style={[styles.base, styles[variant], disabled && styles.disabled, style]}
+            style={[styles.base, styles[variant], styles[size], disabled && styles.disabled, style]}
             onPress={onPress}
             activeOpacity={0.8}
             disabled={disabled}
         >
             <AppText
-                size="md"
+                size={size === 'lg' ? 'lg' : size === 'sm' ? 'sm' : 'md'}
                 weight="semibold"
                 color={variant === 'outline' ? colors.main : colors.white}
             >
@@ -38,12 +39,24 @@ export default function AppButton({
 
 const styles = StyleSheet.create({
     base: {
-        paddingVertical: spacing.sm,
-        paddingHorizontal: spacing.lg,
         borderRadius: 8,
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    sm: {
+        paddingVertical: spacing.xs,
+        paddingHorizontal: spacing.md,
+        height: 36,
+    },
+    md: {
+        paddingVertical: spacing.sm,
+        paddingHorizontal: spacing.lg,
         height: 48,
+    },
+    lg: {
+        paddingVertical: spacing.md,
+        paddingHorizontal: spacing.xl,
+        height: 56,
     },
     primary: {
         backgroundColor: colors.main,
@@ -65,10 +78,8 @@ const styles = StyleSheet.create({
 });
 
 /*
-<AppButton label="확인" onPress={() => {}} />
-<AppButton label="취소" onPress={() => {}} variant="outline" />
-<AppButton label="삭제" onPress={() => {}} variant="delete" />
-<AppButton label="비활성" onPress={() => {}} disabled />
-
-사용법 
+<AppButton label="작은버튼" onPress={() => {}} size="sm" />
+<AppButton label="기본버튼" onPress={() => {}} />
+<AppButton label="큰버튼" onPress={() => {}} size="lg" />
+<AppButton label="큰삭제" onPress={() => {}} size="lg" variant="delete" />
 */
